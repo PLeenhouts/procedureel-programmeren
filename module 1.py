@@ -49,9 +49,6 @@ def show_commands():
     print("Stoppen - (x)                        Het programma afsluiten")
     print()
 
-def clear_screen():
-    os.system("cls")
-
 show_names()
 
 toetsen, leerlingen, cijfers = import_cijfer_overzicht('cijfer_overzicht.csv')
@@ -59,3 +56,20 @@ toetsen, leerlingen, cijfers = import_cijfer_overzicht('cijfer_overzicht.csv')
 show_imported_data(toetsen, leerlingen, cijfers)
 
 show_commands()
+
+def run_program(toesten, leerlingen, cijfers):
+    command_log = []
+
+    while True:
+        cmd = input("Voer een commando in om een actie uit te voeren. Kies een letter die tussen haakjes staat: ").strip().lower()
+
+        if cmd:
+            last_cmd = cmd
+
+        if cmd in ("h"):
+            print("Ingevoerd commando: ", last_cmd)
+            print("Het hulpvenster wordt geladen")            
+            show_commands()
+            continue
+
+run_program(toetsen, leerlingen, cijfers)
