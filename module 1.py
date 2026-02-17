@@ -70,7 +70,23 @@ def run_program(toesten, leerlingen, cijfers):
             last_cmd = cmd
         
         if cmd == "x":
+            ans=input("weet je zeker dat je wilt afsluiten? (y/n): ").strip().lower()
+            if ans == "y":
+                print("Ingevoerd commando: ", last_cmd)
+                print("Programma wordt afgesloten in..3")
+                sleep(1)
+                print("Programma wordt afgesloten in..2")
+                sleep(1)
+                print("Programma wordt afgesloten in..1")
+                sleep(1)
+                print("Programma wordt nu afgesloten")
+                print("Nog een prettige dag!")
+                sleep(1)
+                clear_screen()
             break
+        else:
+            clear_screen()
+            continue
         
         elif cmd in ("h"):
             print("Ingevoerd commando: ", last_cmd)
@@ -85,6 +101,7 @@ def run_program(toesten, leerlingen, cijfers):
             continue
 
 run_program(toetsen, leerlingen, cijfers)
+
 
 
 
