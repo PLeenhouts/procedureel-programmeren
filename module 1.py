@@ -49,6 +49,9 @@ def show_commands():
     print("Stoppen - (x)                        Het programma afsluiten")
     print()
 
+def clear_screen():
+    os.system("cls")
+
 show_names()
 
 toetsen, leerlingen, cijfers = import_cijfer_overzicht('cijfer_overzicht.csv')
@@ -75,7 +78,9 @@ def run_program(toesten, leerlingen, cijfers):
         else:
             print("Het gegeven commando is onbekend. Kies een bestaand commando uit het overzicht. Kies h om het overzicht weer te geven.")
             input("Druk op Enter om door te gaan")
+            clear_screen()
             continue
 
 run_program(toetsen, leerlingen, cijfers)
+
 
