@@ -68,8 +68,11 @@ def run_program(toesten, leerlingen, cijfers):
 
         if cmd:
             last_cmd = cmd
-
-        if cmd in ("h"):
+        
+        if cmd == "x":
+            break
+        
+        elif cmd in ("h"):
             print("Ingevoerd commando: ", last_cmd)
             print("Het hulpvenster wordt geladen")            
             show_commands()
@@ -82,5 +85,6 @@ def run_program(toesten, leerlingen, cijfers):
             continue
 
 run_program(toetsen, leerlingen, cijfers)
+
 
 
