@@ -72,4 +72,10 @@ def run_program(toesten, leerlingen, cijfers):
             show_commands()
             continue
 
+        else:
+            print("Het gegeven commando is onbekend. Kies een bestaand commando uit het overzicht. Kies h om het overzicht weer te geven.")
+            input("Druk op Enter om door te gaan")
+            continue
+
 run_program(toetsen, leerlingen, cijfers)
+
