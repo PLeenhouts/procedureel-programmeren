@@ -1,4 +1,6 @@
 import csv
+import os
+from time import sleep
 
 def import_cijfer_overzicht(file_name):
     with open(file_name) as file:
@@ -11,16 +13,11 @@ def import_cijfer_overzicht(file_name):
     toetsen = data.pop(0)[1:]
 
     leerlingen = []
-    for row in data:
-        leerling = row.pop(0)
-        leerlingen.append(leerling)
-
     cijfers = []
+    
     for row in data:
-        cijfers = []
-        for col in row:
-            cijfers.append(int(col))
-        cijfers.append(cijfers)
+        leerlingen.append(row[0])
+        cijfers.append([int(c) for c in row[1:]])
 
     return toetsen, leerlingen, cijfers
 
@@ -31,7 +28,7 @@ def show_names():
     print()
 
 def show_imported_data(toetsen, leerlingen, cijfers):
-    print("geïmporteerd vanuit een cvs-excel-bestand")
+    print("Geïmporteerd vanuit een cvs-excel-bestand")
     print("Toetsen: ", toetsen)
     print("Leerlingen: ", leerlingen)
     print("Cijfers: ", cijfers)
@@ -52,6 +49,19 @@ def show_commands():
 def clear_screen():
     os.system("cls")
 
+def alle_cijfers(toetsen, leerlingen, cijfers):
+    print("Overzicht van de cijfers van alle toetsen van alle leerlingen")
+    print(f"{'Leerling':15}", end="")
+    for toets in toetsen:
+        print(f"{toets:>8}", end="")
+    print()
+
+    for i, leerling in enumerate(leerlingen):
+        print(f"{leerling:15}", end="")
+        for cijfer in cijfers[i]:
+            print(f"{cijfer:>8}", end="")
+        print()
+
 show_names()
 
 toetsen, leerlingen, cijfers = import_cijfer_overzicht('cijfer_overzicht.csv')
@@ -64,7 +74,7 @@ def run_program(toesten, leerlingen, cijfers):
     command_log = []
 
     while True:
-        cmd = input("Voer een commando in om een actie uit te voeren. Kies een letter die tussen haakjes staat: ").strip().lower()
+        cmd = input("Voer een commando in om een actie uit te voeren. Kies een letter die tussen haakjes staat. (kies h voor help): ").strip().lower()
 
         if cmd:
             last_cmd = cmd
@@ -88,11 +98,18 @@ def run_program(toesten, leerlingen, cijfers):
             clear_screen()
             continue
         
-        elif cmd in ("h"):
+        elif cmd == "h":
             print("Ingevoerd commando: ", last_cmd)
             print("Het hulpvenster wordt geladen")            
             show_commands()
             continue
+
+        elif cmd == "a":
+            clear_screen()  
+            alle_cijfers(toetsen, leerlingen, cijfers)
+            input("Druk Enter om door te gaan...")
+            clear_screen()
+             continue
 
         else:
             print("Het gegeven commando is onbekend. Kies een bestaand commando uit het overzicht. Kies h om het overzicht weer te geven.")
@@ -101,7 +118,3 @@ def run_program(toesten, leerlingen, cijfers):
             continue
 
 run_program(toetsen, leerlingen, cijfers)
-
-
-
-
