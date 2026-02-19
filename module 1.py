@@ -49,6 +49,22 @@ def show_commands():
 def clear_screen():
     os.system("cls")
 
+def shutdown():
+    ans=input("weet je zeker dat je wilt afsluiten? (y/n): ").strip().lower()
+    if ans == "y":
+        print("Programma wordt afgesloten in..3")
+        sleep(1)
+        print("Programma wordt afgesloten in..2")
+        sleep(1)
+        print("Programma wordt afgesloten in..1")
+        sleep(1)
+        print("Programma wordt nu afgesloten")
+        print("Nog een prettige dag!")
+        sleep(1)
+        return True
+    else:
+        return False
+
 def alle_cijfers(toetsen, leerlingen, cijfers):
     print("Overzicht van de cijfers van alle toetsen van alle leerlingen")
     print(f"{'Leerling':15}", end="")
@@ -70,7 +86,7 @@ show_imported_data(toetsen, leerlingen, cijfers)
 
 show_commands()
 
-def run_program(toesten, leerlingen, cijfers):
+def run_program(toetsen, leerlingen, cijfers):
     command_log = []
 
     while True:
@@ -80,32 +96,25 @@ def run_program(toesten, leerlingen, cijfers):
             last_cmd = cmd
         
         if cmd == "x":
-            ans=input("weet je zeker dat je wilt afsluiten? (y/n): ").strip().lower()
-            if ans == "y":
-                print("Ingevoerd commando: ", last_cmd)
-                print("Programma wordt afgesloten in..3")
-                sleep(1)
-                print("Programma wordt afgesloten in..2")
-                sleep(1)
-                print("Programma wordt afgesloten in..1")
-                sleep(1)
-                print("Programma wordt nu afgesloten")
-                print("Nog een prettige dag!")
-                sleep(1)
-                clear_screen()
-            break
-        else:
             clear_screen()
-            continue
+            print("Ingevoerd commando: ", last_cmd)
+            if shutdown():
+                clear_screen()
+                break
+            else:
+                clear_screen()
+                continue
         
         elif cmd == "h":
+            clear_screen()
             print("Ingevoerd commando: ", last_cmd)
             print("Het hulpvenster wordt geladen")            
             show_commands()
             continue
 
         elif cmd == "a":
-            clear_screen()  
+            clear_screen()
+            print("Ingevoerd commando: ", last_cmd)
             alle_cijfers(toetsen, leerlingen, cijfers)
             input("Druk Enter om door te gaan...")
             clear_screen()
@@ -118,3 +127,4 @@ def run_program(toesten, leerlingen, cijfers):
             continue
 
 run_program(toetsen, leerlingen, cijfers)
+
