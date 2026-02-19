@@ -1,4 +1,5 @@
 import os
+from time import sleep
 
 def clear_screen():
     os.system("cls")
@@ -6,16 +7,19 @@ def clear_screen():
 def show_names():
     clear_screen()
     print("Opdracht module 1    -   Cijfer-overzicht")
+    print()
     print("Duo Partner 1        -   Remco van Grootel")
     print("Duo Partner 2        -   Peter Leenhouts")
-    print()
+    sleep(2)
 
 def show_imported_data(toetsen, leerlingen, cijfers):
-    print("Geïmporteerd vanuit een cvs-excel-bestand")
+    clear_screen()
+    print("Data wordt geïmporteerd uit de online database.")
+    sleep(1)
     print("Toetsen: ", toetsen)
     print("Leerlingen: ", leerlingen)
     print("Cijfers: ", cijfers)
-    print()
+    sleep(2)
 
 def show_commands():
     print("Beschikbare commando's:")
@@ -28,4 +32,5 @@ def show_commands():
     print("Help - (h)                           Helpfunctie")
     print("Stoppen - (x)                        Het programma afsluiten")
     print()
+
 
