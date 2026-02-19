@@ -4,12 +4,15 @@ from commands import shutdown, alle_cijfers
 def run_program(toetsen, leerlingen, cijfers):
     command_log = []
     last_cmd = ""
+    last_action_cmd = ""
 
     while True:
         cmd = input("Voer een commando in om een actie uit te voeren. Kies een letter die tussen haakjes staat. (kies h voor help): ").strip().lower()
+        
+        last_cmd = cmd
 
-        if cmd:
-            last_cmd = cmd
+        if cmd != "m":
+            last_action_cmd = cmd
         
         if cmd == "x":
             clear_screen()
@@ -36,6 +39,14 @@ def run_program(toetsen, leerlingen, cijfers):
             clear_screen()
             continue
 
+        elif cmd == "m":
+            clear_screen()
+            print("Ingevoerd commando: ", last_cmd) 
+            bug_report(last_action_cmd)
+            input("Druk Enter om door te gaan...")
+            clear_screen()
+            continue
+            
         else:
             print("Het gegeven commando is onbekend. Kies een bestaand commando uit het overzicht. Kies h om het overzicht weer te geven.")
             input("Druk op Enter om door te gaan")
