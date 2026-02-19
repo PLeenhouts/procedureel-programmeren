@@ -37,4 +37,6 @@ def run_intro_if_needed() -> None:
     _write_intro_flag(True)
 
 def reset_intro() -> None:
-    _write_intro_flag(False)   
+    _write_intro_flag(False)
+    print("Alle settings zijn terug naar standaard gezet.")
+    input("Druk Enter om door te gaan...")
