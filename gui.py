@@ -35,6 +35,8 @@ def show_commands():
     print("Best gemaakte toets - (b)            Laat de hoogst scorende toets zien")
     print("Frequentie voorkomend cijfer - (f)   Laat zien hoevaak een bepaald cijfer voorkomt")
     print("Bug melden (m)                       Maakt een mail klaar om een bug te melden")
+    print("Intro - (i)                          Laat de introductie-helptekst opnieuw zien")
+    print("Reset programma - (r)                Reset alle instellingen van het programma naar de standaard instellingen")
     print("Help - (h)                           Helpfunctie")
     print("Stoppen - (x)                        Het programma afsluiten")
     print()

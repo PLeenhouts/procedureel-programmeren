@@ -1,5 +1,6 @@
 from gui import clear_screen, show_names, show_imported_data, show_commands
 from commands import shutdown, alle_cijfers
+from intro import show_intro, reset_intro
 
 def run_program(toetsen, leerlingen, cijfers):
     command_log = []
@@ -46,8 +47,24 @@ def run_program(toetsen, leerlingen, cijfers):
             input("Druk Enter om door te gaan...")
             clear_screen()
             continue
+
+        elif cmd == "i":
+            clear_screen()
+            print("Ingevoerd commando: ", last_cmd)
+            show_intro()
+            clear_screen()
+            continue
+
+        elif cmd == "r":
+            clear_screen()
+            reset_intro()
+            print("Ingevoerd commando: ", last_cmd)
+            clear_screen()
+            continue
             
         else:
+            clear_screen()
+            print("Ingevoerd commando: ", last_cmd)
             print("Het gegeven commando is onbekend. Kies een bestaand commando uit het overzicht. Kies h om het overzicht weer te geven.")
             input("Druk op Enter om door te gaan")
             clear_screen()
